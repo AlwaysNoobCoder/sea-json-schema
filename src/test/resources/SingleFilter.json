@@ -1,0 +1,50 @@
+{
+	"$id": "https://fwx.org/sea/singlefilter.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "SEA Single Filter JSON Schema",
+	"type": "object",
+	"properties": {
+		"type": {
+			"type": "string",
+			"enum": [
+				"String",
+				"Integer",
+				"Instant",
+				"LocalDate",
+				"LocalTime",
+				"LocalDateInt",
+				"LocalTimeInt"
+			]
+		},
+		"field": {
+			"type": "string",
+			"minLength": 1
+		},
+		"operator": {
+			"type": "string",
+			"enum": [
+				"IS_NULL",
+				"NOT_NULL",
+				"EQUAL",
+				"NOT_EQUAL",
+				"GT",
+				"GTE",
+				"LT",
+				"LTE",
+				"STARTS_WITH",
+				"NOT_STARTS_WITH",
+				"ENDS_WITH",
+				"NOT_ENDS_WITH",
+				"CONTAINS",
+				"BETWEEN",
+				"NOT_BETWEEN",
+				"IN",
+				"NOT_IN"
+			]
+		},
+		"value": {
+			"type": ["string", "number", "bool", "array"]
+		}
+	},
+	"required" : [ "type", "field", "operator", "value"]
+}

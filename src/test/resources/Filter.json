@@ -1,0 +1,19 @@
+{
+	"$id": "https://fwx.org/sea/filter.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "SEA Filter JSON Schema",
+	"type": "object",
+	"if": {
+		"properties": {
+			"type": {
+				"type": "string"
+			}
+		}
+	},
+	"then": {
+		"$ref": "https://fwx.org/sea/singlefilter.json"
+	},
+	"else": {
+		"$ref": "https://fwx.org/sea/groupfilter.json"
+	}
+}

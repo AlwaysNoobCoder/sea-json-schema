@@ -1,0 +1,17 @@
+{
+	"$id": "https://fwx.org/sea/groupfilter.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "SEA Group Filter JSON Schema",
+	"type": "object",
+	"properties" : {
+		"logic" : {
+			"type" : ["string"],
+			"enum" : ["AND", "OR"]
+		},
+		"filters" : {
+			"type" : ["object", "array"],
+			"$ref" : "https://fwx.org/sea/filter.json"
+		}
+	},
+	"required" : ["logic", "filters"]
+}

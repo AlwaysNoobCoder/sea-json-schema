@@ -1,0 +1,6 @@
+{
+	"type": "String",
+	"field": "name",
+	"operator": "EQUAL1",
+	"value": "WestFarmer"
+}

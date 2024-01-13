@@ -1,0 +1,17 @@
+{
+	"logic": "OR",
+	"filters": [
+		{
+			"type": "String",
+			"field": "name",
+			"operator": "EQUAL1",
+			"value": "WestFarmer"
+		},
+		{
+			"type": "String",
+			"field": "name",
+			"operator": "EQUAL",
+			"value": "WestFarmer"
+		}
+	]
+}
