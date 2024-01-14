@@ -1,5 +1,5 @@
 {
-	"$id": "https://fwx.org/sea/groupfilter.json",
+	"$id": "resource:/GroupFilter.json#",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"title": "SEA Group Filter JSON Schema",
 	"type": "object",
@@ -10,7 +10,7 @@
 		},
 		"filters" : {
 			"type" : ["object", "array"],
-			"$ref" : "https://fwx.org/sea/filter.json"
+			"$ref": "resource:/Filter.json#"
 		}
 	},
 	"required" : ["logic", "filters"]

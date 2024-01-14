@@ -3,6 +3,7 @@ package fwx.sea.json.schema.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
+import java.util.Set;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -10,19 +11,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import net.jimblackler.jsonschemafriend.Schema;
-import net.jimblackler.jsonschemafriend.SchemaStore;
-import net.jimblackler.jsonschemafriend.ValidationException;
-import net.jimblackler.jsonschemafriend.Validator;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.networknt.schema.JsonSchema;
+import com.networknt.schema.ValidationMessage;
 
-class SEAJsonSchemaTest {
+class SEAJsonSchemaTest extends BaseTest {
 	
-	private SchemaStore schemaStore;
-	
-	private Schema schema;
-	
-	private Validator validator;
-
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
@@ -33,12 +27,7 @@ class SEAJsonSchemaTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		schemaStore = new SchemaStore();
-	   schema = schemaStore.loadSchema(SEAJsonSchemaTest.class.getResource("/Filter.json"));
-	   schemaStore.loadSchema(SEAJsonSchemaTest.class.getResource("/SingleFilter.json"));
-	   schemaStore.loadSchema(SEAJsonSchemaTest.class.getResource("/GroupFilter.json"));
-	   validator = new Validator();
-	   
+
 	}
 
 	@AfterEach
@@ -48,14 +37,19 @@ class SEAJsonSchemaTest {
 	@Test
 	void test() {
 		try {
-			validator.validate(schema, SEAJsonSchemaTest.class.getResourceAsStream("/test2.json"));
-		} catch (ValidationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			JsonNode schemaNode = super.getJsonNodeFromClasspath("/Filter.json");
+			JsonSchema schema = super.getJsonSchemaFromClasspath("/Filter.json");
+			JsonNode sampleNode = super.getJsonNodeFromClasspath("/test2.json");
+			schema.initializeValidators(); 
+			Set<ValidationMessage> errors = schema.validate(sampleNode);
+			assertEquals(errors.size(), 1);
+			errors.forEach(vm -> {
+				System.out.println(vm.getMessage());
+			});
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 }

@@ -1,5 +1,5 @@
 {
-	"$id": "https://fwx.org/sea/singlefilter.json",
+	"$id": "resource:/SingleFilter.json#",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"title": "SEA Single Filter JSON Schema",
 	"type": "object",
