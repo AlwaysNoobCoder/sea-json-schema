@@ -34,9 +34,9 @@ class SEAJsonSchemaTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		schemaStore = new SchemaStore();
-//	   schema = schemaStore.loadSchema(SEAJsonSchemaTest.class.getResource("/Filter.json"));
-	   schema = schemaStore.loadSchema(SEAJsonSchemaTest.class.getResource("/SingleFilter.json"));
-//	   schemaStore.loadSchema(SEAJsonSchemaTest.class.getResource("/GroupFilter.json"));
+	   schema = schemaStore.loadSchema(SEAJsonSchemaTest.class.getResource("/Filter.json"));
+	   schemaStore.loadSchema(SEAJsonSchemaTest.class.getResource("/SingleFilter.json"));
+	   schemaStore.loadSchema(SEAJsonSchemaTest.class.getResource("/GroupFilter.json"));
 	   validator = new Validator();
 	   
 	}
